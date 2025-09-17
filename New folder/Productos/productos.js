@@ -32,112 +32,80 @@ document.addEventListener('DOMContentLoaded', () => {
     const filterButtons = document.querySelectorAll('.filter-btn');
     const productCards = document.querySelectorAll('.product-card');
     const categoryTitles = document.querySelectorAll('.category-title');
-    const addToCartButtons = document.querySelectorAll('.add-to-cart');
-    const viewProductButtons = document.querySelectorAll('.view-product-btn');
-    
-    // Manejar los botones de filtro
+
     filterButtons.forEach(button => {
         button.addEventListener('click', () => {
-            // Manejar el estado del botón activo
-            filterButtons.forEach(btn => btn.classList.remove('active'));
-            button.classList.add('active');
+            const category = button.dataset.category;
 
-            const categoryToShow = button.dataset.category;
+            // Oculta todos los productos y títulos de categoría
+            productCards.forEach(card => card.style.display = 'none');
+            categoryTitles.forEach(title => title.style.display = 'none');
 
-            // Mostrar u ocultar las tarjetas de productos
-            productCards.forEach(card => {
-                if (categoryToShow === 'all' || card.dataset.category === categoryToShow) {
+            if (category === 'all') {
+                // Muestra todos los productos y títulos si el filtro es 'all'
+                productCards.forEach(card => card.style.display = 'block');
+                categoryTitles.forEach(title => title.style.display = 'block');
+            } else {
+                // Muestra solo los productos y el título de la categoría seleccionada
+                document.querySelectorAll(`.product-card[data-category=\"${category}\"]`).forEach(card => {
                     card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-
-            // Mostrar u ocultar los títulos de las categorías
-            categoryTitles.forEach(title => {
-                if (categoryToShow === 'all' || title.dataset.category === categoryToShow) {
-                    title.style.display = 'block';
-                } else {
-                    title.style.display = 'none';
-                }
-            });
+                });
+                document.querySelector(`.category-title[data-category=\"${category}\"]`).style.display = 'block';
+            }
         });
     });
 
-    // Manejar el evento de clic en los botones "Añadir al carrito"
-    addToCartButtons.forEach(button => {
+    // Lógica para redirigir a la página de producto
+    const viewProductBtns = document.querySelectorAll('.view-product-btn');
+    viewProductBtns.forEach(button => {
         button.addEventListener('click', (event) => {
-            // Detiene la propagación del evento para no activar el clic en la tarjeta de producto.
-            event.stopPropagation();
-            event.preventDefault();
-
-            // Obtiene la tarjeta de producto más cercana al botón.
+            event.preventDefault(); // Previene el comportamiento predeterminado del enlace
             const productCard = button.closest('.product-card');
-            
-            // Recolectar la información del producto de la tarjeta.
-            const productId = productCard.dataset.id;
-            const productName = productCard.querySelector('h3').textContent;
-            const productPriceText = productCard.querySelector('.price').textContent;
-            const productPrice = parseFloat(productPriceText.replace('$', ''));
-            const productImage = productCard.querySelector('img').src;
-            
-            // Crea un objeto con la información del producto.
-            const productToAdd = {
-                id: productId,
-                name: productName,
-                price: productPrice,
-                image: productImage,
-            };
 
-            // Obtiene el carrito del almacenamiento local.
-            let cart = JSON.parse(localStorage.getItem('cart')) || [];
-            
-            // Busca si el producto ya existe en el carrito.
-            const existingProductIndex = cart.findIndex(item => item.id === productToAdd.id);
-
-            if (existingProductIndex !== -1) {
-                // Si el producto ya existe, incrementa su cantidad.
-                cart[existingProductIndex].quantity += 1;
-            } else {
-                // Si no existe, añade el nuevo producto al carrito con una cantidad de 1.
-                cart.push({ ...productToAdd, quantity: 1 });
+            // Asegúrate de que la tarjeta de producto exista
+            if (!productCard) {
+                console.error("No se encontró la tarjeta de producto.");
+                showNotification("Error: No se puede ver el producto. Inténtalo de nuevo.");
+                return;
             }
 
-            // Guarda el carrito actualizado en localStorage.
-            localStorage.setItem('cart', JSON.stringify(cart));
-
-            // Actualiza el contador del carrito en la interfaz.
-            updateCartCount();
-            
-            // Muestra una notificación al usuario.
-            showNotification(`${productName} ha sido añadido al carrito.`);
-        });
-    });
-
-    // Manejar el evento de clic en los botones "Ver más"
-    viewProductButtons.forEach(button => {
-        button.addEventListener('click', (event) => {
-            // Previene el comportamiento por defecto del enlace.
-            event.preventDefault();
-
-            // Obtiene la tarjeta de producto más cercana al botón que se hizo clic.
-            const productCard = button.closest('.product-card');
-            
-            // Recolecta toda la información del producto.
-            const productId = productCard.dataset.id;
+            // Recopila los datos del producto
+            const productId = productCard.getAttribute('data-id');
             const productName = productCard.querySelector('h3').textContent;
             const productPriceText = productCard.querySelector('.price').textContent;
             const productPrice = parseFloat(productPriceText.replace('$', ''));
             const productImage = productCard.querySelector('img').src;
-            
-            // Añade una descripción y características de ejemplo para la página del producto
-            const productDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."; // Ejemplo de descripción
-            const productFeatures = [
-                "Característica A",
-                "Característica B",
-                "Característica C"
-            ]; // Ejemplo de características
 
+            // Añade una descripción y características de ejemplo para la página del producto
+            let productDescription;
+            let productFeatures;
+
+            if (productId === "iphone16pro") {
+                productDescription = "El iPhone más potente y sofisticado hasta la fecha. Con una pantalla más grande, cámaras de nivel profesional y un rendimiento inigualable.";
+                productFeatures = ["Cámara principal de 50 MP", "Pantalla OLED de 6.7\" con ProMotion", "Batería de larga duración", "Cuerpo de titanio"];
+            } else if (productId === "iphonese") {
+                productDescription = "El iPhone SE combina el chip A15 Bionic, 5G, gran autonomía y un diseño robusto en un solo dispositivo.";
+                productFeatures = ["Chip A15 Bionic", "Conectividad 5G ultrarrápida", "Gran autonomía de batería", "Botón de inicio con Touch ID"];
+            } else if (productId === "ipadpro") {
+                productDescription = "El iPad Pro es el lienzo y el cuaderno más versátiles del mundo.";
+                productFeatures = ["Chip M4 ultrarrápido", "Pantalla Liquid Retina XDR", "Sistema de cámara avanzado"];
+            } else if (productId === "macbookair15") {
+                productDescription = "El MacBook Air 15'' es increíblemente fino, potente y perfecto para cualquier tarea.";
+                productFeatures = ["Chip M3", "Pantalla Liquid Retina de 15.3 pulgadas", "Batería de hasta 18 horas"];
+            } else if (productId === "applewatchseries10") {
+                productDescription = "El Apple Watch Series 10 te ayuda a mantenerte activo, sano y conectado.";
+                productFeatures = ["Pantalla más grande", "Nuevas funciones de salud", "Detección de accidentes"];
+            } else if (productId === "airpodspro") {
+                productDescription = "Los AirPods Pro ofrecen cancelación de ruido, sonido envolvente y un ajuste cómodo.";
+                productFeatures = ["Cancelación activa de ruido", "Modo de sonido ambiente adaptable", "Audio espacial personalizado"];
+            } else if (productId === "cargador_magsafe") {
+                productDescription = "El Cargador MagSafe simplifica la carga inalámbrica.";
+                productFeatures = ["Carga rápida inalámbrica", "Imanes perfectamente alineados", "Diseño compacto"];
+            } else {
+                productDescription = "Descripción no disponible.";
+                productFeatures = [];
+            }
+            
             const selectedProduct = {
                 id: productId,
                 name: productName,
@@ -146,7 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 description: productDescription,
                 features: productFeatures
             };
-            
+
             // Guarda el producto seleccionado en localStorage antes de redirigir.
             localStorage.setItem('selectedProduct', JSON.stringify(selectedProduct));
 

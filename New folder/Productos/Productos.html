@@ -35,122 +35,93 @@
 
         <!-- Filtros de Categoría -->
         <div class="category-filters">
-            <button class="filter-btn active" data-category="all">Todos</button>
+            <button class="filter-btn" data-category="all">Todos</button>
             <button class="filter-btn" data-category="iphone">iPhone</button>
+            <button class="filter-btn" data-category="ipad">iPad</button>
             <button class="filter-btn" data-category="mac">Mac</button>
             <button class="filter-btn" data-category="watch">Watch</button>
+            <button class="filter-btn" data-category="audio">Audio</button>
             <button class="filter-btn" data-category="accesorios">Accesorios</button>
         </div>
 
-        <div class="products-container">
-            <!-- Sección iPhone -->
-            <section class="product-category" data-category="iphone">
-                <h2>iPhone</h2>
-                <div class="product-grid">
-                    <div href="#" class="product-card-link">
-                        <div id="iPhon_16" class="product-card">
-                           <img src="https://placehold.co/400x400/f5f5f7/1d1d1f?text=iPhone+16+Pro" alt="iPhone 16 Pro">
-                           <h3>iPhone 16 Pro</h3>
-                           <p class="price">Desde $1.199</p>
-                           <a href="../Producto/pagina_producto.html" class="view-product-btn">Ver más</a href="../Producto/pagina_producto.html">
-                        </div>
-                    </div>
-                    <div href="#" class="product-card-link">
-                        <div class="product-card">
-                           <img src="https://placehold.co/400x400/f5f5f7/1d1d1f?text=iPhone+16" alt="iPhone 16">
-                           <h3>iPhone 16</h3>
-                           <p class="price">Desde $999</p>
-                           <a href="../Producto/pagina_producto.html" class="view-product-btn">Ver más</a href="../Producto/pagina_producto.html">
-                        </div>
-                    </div>
-                    <div href="#" class="product-card-link">
-                        <div class="product-card">
-                           <img src="https://placehold.co/400x400/f5f5f7/1d1d1f?text=iPhone+SE" alt="iPhone SE">
-                           <h3>iPhone SE</h3>
-                           <p class="price">Desde $429</p>
-                           <a href="../Producto/pagina_producto.html" class="view-product-btn">Ver más</a href="../Producto/pagina_producto.html">
-                        </div>
-                    </div>
+        <!-- Secciones de Productos -->
+        <section class="product-category" data-category="iphone">
+            <h2 class="category-title" data-category="iphone">iPhone</h2>
+            <div class="product-grid">
+                <div class="product-card" data-id="iphone16pro" data-category="iphone">
+                    <img src="../img/iphone-16-pro-max-1_6EFF873F24804524AAB5AAD8389E990E.jpg" alt="iPhone 16 Pro Max">
+                    <h3>iPhone 16 Pro Max</h3>
+                    <p class="price">$1200</p>
+                    <a href="../Producto/pagina_producto.html" class="view-product-btn">Ver más</a>
                 </div>
-            </section>
+                <div class="product-card" data-id="iphonese" data-category="iphone">
+                    <img src="../img/iphone_se_black-1.jpg" alt="iPhone SE">
+                    <h3>iPhone SE</h3>
+                    <p class="price">$429</p>
+                    <a href="../Producto/pagina_producto.html" class="view-product-btn">Ver más</a>
+                </div>
+            </div>
+        </section>
 
-            <!-- Sección Mac -->
-            <section class="product-category" data-category="mac">
-                <h2>Mac</h2>
-                <div class="product-grid">
-                    <div href="#" class="product-card-link">
-                        <div class="product-card">
-                           <img src="https://placehold.co/400x400/f5f5f7/1d1d1f?text=MacBook+Pro+M4" alt="MacBook Pro M4">
-                           <h3>MacBook Pro M4</h3>
-                           <p class="price">Desde $2.499</p>
-                           <a href="../Producto/pagina_producto.html" class="view-product-btn">Ver más</a href="../Producto/pagina_producto.html">
-                        </div>
-                    </div>
-                    <div href="#" class="product-card-link">
-                        <div class="product-card">
-                           <img src="https://placehold.co/400x400/f5f5f7/1d1d1f?text=MacBook+Air+M3" alt="MacBook Air M3">
-                           <h3>MacBook Air M3</h3>
-                           <p class="price">Desde $1.099</p>
-                           <a href="../Producto/pagina_producto.html" class="view-product-btn">Ver más</a href="../Producto/pagina_producto.html">
-                        </div>
-                    </div>
-                    <div href="#" class="product-card-link">
-                        <div class="product-card">
-                           <img src="https://placehold.co/400x400/f5f5f7/1d1d1f?text=iMac" alt="iMac">
-                           <h3>iMac</h3>
-                           <p class="price">Desde $1.299</p>
-                           <a href="../Producto/pagina_producto.html" class="view-product-btn">Ver más</a href="../Producto/pagina_producto.html">
-                        </div>
-                    </div>
+        <section class="product-category" data-category="ipad">
+            <h2 class="category-title" data-category="ipad">iPad</h2>
+            <div class="product-grid">
+                <div class="product-card" data-id="ipadpro" data-category="ipad">
+                    <img src="../img/ipad-pro-1.jpg" alt="iPad Pro">
+                    <h3>iPad Pro</h3>
+                    <p class="price">$799</p>
+                    <a href="../Producto/pagina_producto.html" class="view-product-btn">Ver más</a>
                 </div>
-            </section>
+            </div>
+        </section>
+        
+        <section class="product-category" data-category="mac">
+            <h2 class="category-title" data-category="mac">Mac</h2>
+            <div class="product-grid">
+                <div class="product-card" data-id="macbookair15" data-category="mac">
+                    <img src="../img/macbook-air-15.jpg" alt="MacBook Air 15''">
+                    <h3>MacBook Air 15''</h3>
+                    <p class="price">$1299</p>
+                    <a href="../Producto/pagina_producto.html" class="view-product-btn">Ver más</a>
+                </div>
+            </div>
+        </section>
+        
+        <section class="product-category" data-category="watch">
+            <h2 class="category-title" data-category="watch">Apple Watch</h2>
+            <div class="product-grid">
+                <div class="product-card" data-id="applewatchseries10" data-category="watch">
+                    <img src="../img/apple-watch-s10.jpg" alt="Apple Watch Series 10">
+                    <h3>Apple Watch Series 10</h3>
+                    <p class="price">$499</p>
+                    <a href="../Producto/pagina_producto.html" class="view-product-btn">Ver más</a>
+                </div>
+            </div>
+        </section>
+        
+        <section class="product-category" data-category="audio">
+            <h2 class="category-title" data-category="audio">Audio</h2>
+            <div class="product-grid">
+                <div class="product-card" data-id="airpodspro" data-category="audio">
+                    <img src="../img/airpods-pro.jpg" alt="AirPods Pro">
+                    <h3>AirPods Pro</h3>
+                    <p class="price">$249</p>
+                    <a href="../Producto/pagina_producto.html" class="view-product-btn">Ver más</a>
+                </div>
+            </div>
+        </section>
 
-             <!-- Sección Watch -->
-            <section class="product-category" data-category="watch">
-                <h2>Watch</h2>
-                <div class="product-grid">
-                    <div href="#" class="product-card-link">
-                        <div class="product-card">
-                           <img src="https://placehold.co/400x400/f5f5f7/1d1d1f?text=Apple+Watch+X" alt="Apple Watch Series 10">
-                           <h3>Apple Watch X</h3>
-                           <p class="price">Desde $499</p>
-                           <a href="../Producto/pagina_producto.html" class="view-product-btn">Ver más</a href="../Producto/pagina_producto.html">
-                        </div>
-                    </div>
-                    <div href="#" class="product-card-link">
-                        <div class="product-card">
-                           <img src="https://placehold.co/400x400/f5f5f7/1d1d1f?text=Apple+Watch+Ultra+2" alt="Apple Watch Ultra 2">
-                           <h3>Apple Watch Ultra 2</h3>
-                           <p class="price">Desde $799</p>
-                           <a href="../Producto/pagina_producto.html" class="view-product-btn">Ver más</a href="../Producto/pagina_producto.html">
-                        </div>
-                    </div>
+        <section class="product-category" data-category="accesorios">
+            <h2 class="category-title" data-category="accesorios">Accesorios</h2>
+            <div class="product-grid">
+                <div class="product-card" data-id="cargador_magsafe" data-category="accesorios">
+                    <img src="../img/magsafe_charger_1-2.jpg" alt="Cargador MagSafe">
+                    <h3>Cargador MagSafe</h3>
+                    <p class="price">$39</p>
+                    <a href="../Producto/pagina_producto.html" class="view-product-btn">Ver más</a>
                 </div>
-            </section>
-
-             <!-- Sección Accesorios -->
-            <section class="product-category" data-category="accesorios">
-                <h2>Accesorios</h2>
-                <div class="product-grid">
-                    <div href="#" class="product-card-link">
-                        <div class="product-card">
-                           <img src="https://placehold.co/400x400/f5f5f7/1d1d1f?text=AirPods+Pro" alt="AirPods Pro 3ra Gen">
-                           <h3>AirPods Pro (3ra Gen)</h3>
-                           <p class="price">$249</p>
-                           <a href="../Producto/pagina_producto.html" class="view-product-btn">Ver más</a href="../Producto/pagina_producto.html">
-                        </div>
-                    </div>
-                    <div href="#" class="product-card-link">
-                        <div class="product-card">
-                           <img src="https://placehold.co/400x400/f5f5f7/1d1d1f?text=Cargador+MagSafe" alt="Cargador MagSafe">
-                           <h3>Cargador MagSafe</h3>
-                           <p class="price">$39</p>
-                           <a href="../Producto/pagina_producto.html" class="view-product-btn">Ver más</a href="../Producto/pagina_producto.html">
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
+            </div>
+        </section>
     </main>
 
     <footer id="contacto-footer">
@@ -180,6 +151,5 @@
 
     <script src="productos.js">
     </script>
-    <script src="../Inicio/pagina_inicio.html" ></script>
 </body>
 </html>
