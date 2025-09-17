@@ -1,0 +1,304 @@
+/* --- Estilos para la página de producto (product-page) --- */
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+/* Estilos globales para todo el cuerpo de la página */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f7;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Encabezado */
+header {
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+    padding: 10px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+
+.logo h1 {
+    margin: 0;
+    font-size: 2em;
+    color: #007bff; /* Un azul similar al de Apple */
+    transition: color 0.3s ease;
+}
+
+.logo a {
+    text-decoration: none;
+}
+
+.logo h1:hover {
+    color: #0056b3;
+}
+
+nav {
+    display: flex; /* Mantiene a los elementos como cajas flexibles */
+    flex: 1; /* ¡NUEVO! Le dice al navegador que el nav debe crecer y ocupar todo el espacio disponible entre el logo y el botón del carrito. */
+    justify-content: center; /* ¡NUEVO! Centra horizontalmente el contenido (los enlaces) dentro del nav. */
+    padding-left: 11%;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0; /* ¡MODIFICADO! Quitamos el margen por defecto para que los enlaces queden bien centrados */
+    padding: 0;
+    display: flex;
+}
+
+nav li {
+    margin-right: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #555;
+    font-weight: 700;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #007bff;
+}
+
+.search-and-cart {
+    display: flex;
+    align-items: center;
+}
+
+.search-and-cart input[type="text"] {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+    font-size: 14px;
+}
+
+.search-and-cart input[type="text"]:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    outline: none;
+}
+.cart-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    font-weight: 700;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+}
+
+.cart-button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Sección principal */
+main {
+    padding: 20px 5%;
+    padding-bottom: 8%;
+}
+
+/* Banner principal (Hero) */
+.hero {
+    position: relative;
+    text-align: center;
+    color: #fff;
+    margin-bottom: 40px;
+    
+}
+
+
+.hero img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    filter: brightness(70%);
+}
+
+.hero-text {
+    margin-top: 9px;
+    position: absolute;
+    top: 23%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 135%;
+    bottom: 6%;
+    height: 52%;
+}
+
+.hero-text h2 {
+    font-size: 3em;
+    margin-top: 10%;
+    color: white;
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: #007bff;
+    color: #fff;
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 700;
+    transition: background-color 0.3s ease;
+}
+
+
+
+.cta-button:hover {
+    background-color: #0056b3;
+}
+
+
+
+h2 {
+    text-align: center;
+    font-size: 2.5em;
+    color: #333;
+    margin-bottom: 3%;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 127px;
+}
+
+.product-card {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+}
+
+.product-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.product-card h3 {
+    font-size: 1.5em;
+    margin: 10px 0;
+    color: #007bff;
+}
+
+.product-card .price {
+    font-size: 1.2em;
+    font-weight: 700;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.add-to-cart {
+    display: inline-block;
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 700;
+    transition: background-color 0.3s ease;
+}
+
+.add-to-cart:hover {
+    background-color: #007bff;
+}
+
+
+/* Pie de página */
+footer {
+    background-color: #222;
+    color: #eee;
+    padding: 40px 5%;
+    border-top: 5px solid #007bff;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.footer-section {
+    flex: 1;
+    margin-right: 20px;
+    min-width: 200px;
+}
+
+.footer-section h3 {
+    font-size: 1.2em;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 5px;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section a {
+    color: #eee;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-section a:hover {
+    color: #007bff;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 20px;
+    padding-top: 10px;
+    border-top: 1px solid #444;
+}
+
+
+
+
+/* Media Queries para diseño responsivo */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav li {
+        margin: 10px 0;
+    }
+
+    
+}
+
+    .hero-text h2 {
+        font-size: 5em;
+    }
