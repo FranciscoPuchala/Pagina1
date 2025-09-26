@@ -11,11 +11,14 @@
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
         body {
+            display: flex;
             font-family: 'Roboto', sans-serif;
+            flex-direction: column;
             margin: 0;
             padding: 0;
             background-color: #f4f4f7;
             color: #333;
+            min-height: 100vh;
         }
 
         header {
@@ -101,6 +104,7 @@
             background-color: #222;
             color: #eee;
             padding: 40px 5%;
+            margin-bottom: ;
             border-top: 5px solid #007bff;
         }
 
@@ -115,6 +119,16 @@
             flex: 1;
             min-width: 200px;
         }
+
+        .footer-section a{
+            color: #eee;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: #007bff;
+        }
         
         .footer-bottom {
             text-align: center;
@@ -125,6 +139,7 @@
 
         /* Nuevos estilos para la página de Checkout */
         .checkout-page {
+            flex: 1;
             padding: 2rem 5%;
             max-width: 1200px;
             margin: 40px auto;
@@ -325,9 +340,9 @@
         </div>
         <nav>
             <ul>
-                <li><a href="#">Inicio</a></li>
-                <li><a href="#">Productos</a></li>
-                <li><a href="#">Contacto</a></li>
+                <li><a href="../Inicio/pagina_inicio.html" >Inicio</a></li>
+                <li><a href="../Productos/Productos.html" >Productos</a></li>
+                <li><a href="../Contacto/contactos.html">Contacto</a></li>
             </ul>
         </nav>
         <div class="search-and-cart">
@@ -398,6 +413,7 @@
                 <ul>
                     <li><a href="#">Política de privacidad</a></li>
                     <li><a href="#">Términos de servicio</a></li>
+                    <li><a href="#">Devoluciones y envíos</a></li>
                 </ul>
             </div>
             <div class="footer-section contact">
@@ -410,36 +426,32 @@
             <p>&copy; 2025 iPlace. Todos los derechos reservados.</p>
         </div>
     </footer>
+        <script>
+            const mpOption = document.getElementById('mp-option');
+            const transferOption = document.getElementById('transfer-option');
 
-    <!-- 
-    NOTA: Para la interactividad (como seleccionar un método de pago y mostrar/ocultar detalles), 
-    necesitarías agregar JavaScript. Por ejemplo:
-    
-    <script>
-        const mpOption = document.getElementById('mp-option');
-        const transferOption = document.getElementById('transfer-option');
+            // Lógica para seleccionar Mercado Pago
+            mpOption.addEventListener('click', () => {
+                mpOption.classList.add('selected');
+                transferOption.classList.remove('selected');
+                // Aquí iría el código para inicializar el checkout de Mercado Pago
+            });
 
-        // Lógica para seleccionar Mercado Pago
-        mpOption.addEventListener('click', () => {
-            mpOption.classList.add('selected');
-            transferOption.classList.remove('selected');
-            // Aquí iría el código para inicializar el checkout de Mercado Pago
-        });
-
-        // Lógica para seleccionar Transferencia
-        transferOption.addEventListener('click', () => {
-            transferOption.classList.add('selected');
-            mpOption.classList.remove('selected');
-        });
-        
-        // Inicializar el SDK de Mercado Pago
-        // const mp = new MercadoPago('TU_PUBLIC_KEY');
-        // mp.bricks().create("wallet", "wallet_container", {
-        //    initialization: {
-        //        preferenceId: "TU_PREFERENCE_ID",
-        //    },
-        // });
-    </script>
-    -->
+            // Lógica para seleccionar Transferencia
+            transferOption.addEventListener('click', () => {
+                transferOption.classList.add('selected');
+                mpOption.classList.remove('selected');
+            });
+            
+            // Inicializar el SDK de Mercado Pago
+            /*
+             const mp = new MercadoPago('TU_PUBLIC_KEY');
+             mp.bricks().create("wallet", "wallet_container", {
+                initialization: {
+                    preferenceId: "TU_PREFERENCE_ID",
+               },
+             });
+             */
+        </script>
 </body>
 </html>
