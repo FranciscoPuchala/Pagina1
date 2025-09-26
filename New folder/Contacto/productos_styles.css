@@ -3,12 +3,20 @@
 
 /* Estilos globales para todo el cuerpo de la página */
 body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
     font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f4f4f7;
     color: #333;
 }
+
+ul{
+    list-style: none;
+}
+
 
 /* Encabezado */
 header {
@@ -130,6 +138,7 @@ footer {
 }
 
 .footer-section ul {
+    list-style-type: none;
     list-style: none;
     padding: 0;
 }
@@ -382,6 +391,7 @@ main.cart-page {
    ========================================================================== */
 .contact-page-main {
     padding: 40px 5%;
+    flex: 1;
 }
 
 .contact-header {
