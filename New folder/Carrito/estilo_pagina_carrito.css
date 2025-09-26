@@ -3,6 +3,9 @@
 
 /* Estilos globales para todo el cuerpo de la página */
 body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
     font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
@@ -78,7 +81,11 @@ nav a:hover {
     font-size: 14px;
 }
 
-
+.cart-page{
+    flex: 1;
+    padding: 2%;
+    margin: 0;
+}
 
 .search-and-cart input[type="text"]:focus {
     border-color: #007bff;
@@ -109,7 +116,7 @@ footer {
     color: #eee;
     padding: 40px;
     font-size: 0.9em;
-    margin-top: 14%;
+    margin-top: 0;
     padding: 40px;
     border-top: 5px solid #007bff;
 }
@@ -283,6 +290,7 @@ footer {
 .cart-summary {
     flex: 1;
     background-color: #fff;
+    margin-top: 1%;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);

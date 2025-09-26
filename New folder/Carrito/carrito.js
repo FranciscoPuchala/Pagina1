@@ -129,3 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Actualiza el contador del carrito
     updateCartCount();
 });
+
+document.querySelector('.checkout-button').addEventListener('click', function() {
+    window.location.href = '../Finalizar_compra/Finalizar_compra.html';
+});
