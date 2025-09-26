@@ -102,11 +102,12 @@ nav a:hover {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
-
+/* Estilos para el pie de página */
 footer {
     background-color: #222;
     color: #eee;
-    padding: 40px 5%;
+    margin-top: 0;
+    padding: 40px;
     padding-bottom: 0.3%;
     border-top: 5px solid #007bff;
 }
@@ -131,6 +132,7 @@ footer {
 }
 
 .footer-section ul {
+    list-style-type: none;
     list-style: none;
     padding: 0;
 }
@@ -138,6 +140,18 @@ footer {
 .footer-section a {
     color: #eee;
     text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-section a:hover {
+    color: #007bff;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 20px;
+    padding-top: 10px;
+    border-top: 1px solid #444;
 }
 
 /* ==========================================================================

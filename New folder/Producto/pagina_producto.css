@@ -226,7 +226,8 @@ nav a:hover {
 footer {
     background-color: #222;
     color: #eee;
-    padding: 40px 5%;
+    margin-top: 6%;
+    padding: 40px;
     padding-bottom: 0.3%;
     border-top: 5px solid #007bff;
 }
@@ -235,11 +236,11 @@ footer {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    gap: 2rem;
 }
 
 .footer-section {
     flex: 1;
-    margin-right: 20px;
     min-width: 200px;
 }
 
@@ -247,9 +248,11 @@ footer {
     font-size: 1.2em;
     border-bottom: 2px solid #007bff;
     padding-bottom: 5px;
+    color: #fff;
 }
 
 .footer-section ul {
+    list-style-type: none;
     list-style: none;
     padding: 0;
 }
