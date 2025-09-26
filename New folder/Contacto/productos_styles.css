@@ -105,11 +105,14 @@ nav a:hover {
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
+
+/* Estilos para el pie de página */
 footer {
     background-color: #222;
     color: #eee;
     margin-top: 6%;
     padding: 40px;
+    padding-bottom: 0.3%;
     border-top: 5px solid #007bff;
 }
 

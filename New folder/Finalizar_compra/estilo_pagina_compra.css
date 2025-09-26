@@ -90,10 +90,12 @@
             text-decoration: none;
         }
 
+        /* Pie de página */
         footer {
             background-color: #222;
             color: #eee;
             padding: 40px 5%;
+            padding-bottom: 0.3%;
             border-top: 5px solid #007bff;
         }
 
@@ -101,15 +103,26 @@
             display: flex;
             justify-content: space-between;
             flex-wrap: wrap;
-            gap: 2rem;
         }
 
         .footer-section {
             flex: 1;
+            margin-right: 20px;
             min-width: 200px;
         }
 
-        .footer-section a{
+        .footer-section h3 {
+            font-size: 1.2em;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 5px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-section a {
             color: #eee;
             text-decoration: none;
             transition: color 0.3s ease;
@@ -118,7 +131,7 @@
         .footer-section a:hover {
             color: #007bff;
         }
-        
+
         .footer-bottom {
             text-align: center;
             margin-top: 20px;
