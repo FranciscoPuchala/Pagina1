@@ -69,6 +69,10 @@ const renderCartItems = () => {
     const tax = subtotal * 0.10;
     const total = subtotal + tax;
     
+    // ******* NUEVA LÍNEA *******
+    localStorage.setItem('checkoutTotal', total.toFixed(2));
+    // ***************************
+    
     // Actualiza los elementos del resumen del carrito en el DOM
     subtotalElement.textContent = `$${subtotal.toFixed(2)}`;
     totalElement.textContent = `$${total.toFixed(2)}`;
