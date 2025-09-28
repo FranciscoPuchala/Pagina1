@@ -66,8 +66,8 @@ const renderCartItems = () => {
     }
 
     // Calcular el total (asumiendo un impuesto del 10%)
-    const tax = subtotal * 0.10;
-    const total = subtotal + tax;
+    // const tax = subtotal * 0.10;
+    const total = subtotal 
     
     // ******* NUEVA LÍNEA *******
     localStorage.setItem('checkoutTotal', total.toFixed(2));
