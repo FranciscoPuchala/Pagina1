@@ -15,25 +15,21 @@ const updateCheckoutTotal = () => {
         // 2. Actualiza el texto del elemento Total con el valor guardado
         totalElement.textContent = `$${checkoutTotal}`;
         
-        // **OPCIONAL:** También actualiza el subtotal y el total en la sección del resumen si es necesario,
-        // aunque tu HTML actualmente solo tiene un elemento con id 'total-price'.
-        // Si tienes más elementos que actualizar, los harías aquí.
+        // **NUEVA LÓGICA SIMPLIFICADA Y CORREGIDA:**
+        // 1. Corrige el error de tipeo:
+        const subtotalSummary = document.getElementById('subtotal-price');
         
-        // Aquí actualizamos el subtotal y el total-price en la sección de resumen
-        // Como tu HTML usa el mismo $1,299.00 como subtotal y el total-price solo tiene el total:
-        const subtotalSummary = docuumen.getElementById0('subtotal-price')
-        const calculatedSubtotal = (parseFloat(checkoutTotal) / 1.10).toFixed(2); // Inverso del 10% de impuesto
-        
+        // 2. Hace que el Subtotal sea IGUAL al Total (ya que ya no hay impuesto):
         if (subtotalSummary) {
-            subtotalSummary.textContent = `$${calculatedSubtotal}`;
+            subtotalSummary.textContent = `$${checkoutTotal}`;
         }
         
     } else {
-        // En caso de que no haya total, puede ser útil mostrar un 0 o un mensaje
+        // En caso de que no haya total, muestra $0.00
         totalElement.textContent = '$0.00';
     }
 };
-
+// ...
 // Llama a la nueva función para actualizar el total al cargar la página.
 updateCheckoutTotal();
 
