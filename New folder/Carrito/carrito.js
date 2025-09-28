@@ -66,16 +66,16 @@ const renderCartItems = () => {
     }
 
     // Calcular el total (asumiendo un impuesto del 10%)
-    // const tax = subtotal * 0.10;
-    const total = subtotal 
+    const tax = subtotal * 0.10;
+    const total = subtotal + tax;
     
-    // ******* NUEVA LÍNEA *******
     localStorage.setItem('checkoutTotal', total.toFixed(2));
-    // ***************************
-    
+
+
     // Actualiza los elementos del resumen del carrito en el DOM
     subtotalElement.textContent = `$${subtotal.toFixed(2)}`;
     totalElement.textContent = `$${total.toFixed(2)}`;
+
 
     // Asigna los eventos a los botones de eliminar después de renderizar los elementos
     const removeButtons = document.querySelectorAll('.remove-item');
