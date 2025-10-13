@@ -9,6 +9,26 @@ body {
     color: #333;
 }
 
+/* Estilo para la notificación temporal de error/éxito */
+.notification-message {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #007bff; /* Azul para éxito/info */
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+    z-index: 1000;
+}
+
+.notification-message.fade-out {
+    opacity: 0;
+}
+
+
 /* Encabezado */
 header {
     background-color: #fff;
@@ -572,5 +592,10 @@ main.cart-page {
     .cart-container {
         flex-direction: column;
     }
+    
+    .notification-message {
+        bottom: 10px;
+        right: 10px;
+        font-size: 0.9em;
+    }
 }
-

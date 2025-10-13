@@ -3,13 +3,15 @@ const cartButton = document.querySelector('.cart-button');
 
 // Función para mostrar una notificación temporal al usuario.
 const showNotification = (message) => {
+    // Crea el elemento de notificación
     const notification = document.createElement('div');
     notification.textContent = message;
-    notification.className = 'notification-message';
+    notification.className = 'notification-message'; // Clase definida en productos_style.css
     document.body.appendChild(notification);
 
     // Oculta la notificación después de 2 segundos.
     setTimeout(() => {
+        // Usa una clase para la animación de desvanecimiento
         notification.classList.add('fade-out');
         notification.addEventListener('transitionend', () => {
             notification.remove();
@@ -30,27 +32,33 @@ const updateCartCount = () => {
 // Lógica para el filtro de categorías
 document.addEventListener('DOMContentLoaded', () => {
     const filterButtons = document.querySelectorAll('.filter-btn');
-    const productCards = document.querySelectorAll('.product-card');
-    const categoryTitles = document.querySelectorAll('.category-title');
-
+    
+    // Función para manejar el filtro al hacer clic en un botón
     filterButtons.forEach(button => {
         button.addEventListener('click', () => {
             const category = button.dataset.category;
 
-            // Oculta todos los productos y títulos de categoría
-            productCards.forEach(card => card.style.display = 'none');
-            categoryTitles.forEach(title => title.style.display = 'none');
+            // Oculta todas las secciones de productos
+            document.querySelectorAll('.product-category').forEach(section => {
+                section.style.display = 'none';
+            });
+            
+            // Remueve la clase 'active' de todos los botones de filtro
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            // Agrega la clase 'active' al botón seleccionado
+            button.classList.add('active');
 
             if (category === 'all') {
-                // Muestra todos los productos y títulos si el filtro es 'all'
-                productCards.forEach(card => card.style.display = 'block');
-                categoryTitles.forEach(title => title.style.display = 'block');
-            } else {
-                // Muestra solo los productos y el título de la categoría seleccionada
-                document.querySelectorAll(`.product-card[data-category=\"${category}\"]`).forEach(card => {
-                    card.style.display = 'block';
+                // Muestra todas las secciones de productos
+                document.querySelectorAll('.product-category').forEach(section => {
+                    section.style.display = 'block';
                 });
-                document.querySelector(`.category-title[data-category=\"${category}\"]`).style.display = 'block';
+            } else {
+                // Muestra solo la sección de la categoría seleccionada
+                const selectedSection = document.querySelector(`.product-category[data-category=\"${category}\"]`);
+                if (selectedSection) {
+                    selectedSection.style.display = 'block';
+                }
             }
         });
     });
@@ -73,14 +81,39 @@ document.addEventListener('DOMContentLoaded', () => {
             const productId = productCard.getAttribute('data-id');
             const productName = productCard.querySelector('h3').textContent;
             const productPriceText = productCard.querySelector('.price').textContent;
-            const productPrice = parseFloat(productPriceText.replace('$', ''));
-            const productImage = productCard.querySelector('img').src;
+            // Aseguramos que se pueda parsear el precio correctamente limpiando el símbolo
+            const productPrice = parseFloat(productPriceText.replace('$', '').replace('.', '').replace(',', '.'));
+            
+            // --- INICIO: SOLUCIÓN DEL ERROR AL OBTENER LA RUTA DE LA IMAGEN ---
+            let productImage = '';
+            const imgElement = productCard.querySelector('img');
+
+            if (imgElement) {
+                // Caso 1: Si existe el tag <img> (productos como iPad Pro, accesorios, etc.)
+                productImage = imgElement.src;
+            } else {
+                // Caso 2: Si la imagen está definida con un DIV y fondo CSS (productos como iPhone)
+                if (productId === 'iphone16promax') {
+                    // Ruta hardcodeada según la configuración en productos_style.css para .first-image
+                    productImage = '../img/iphone-16-pro-max-1_6EFF873F24804524AAB5AAD8389E9913.jpg';
+                } else if (productId === 'iphonese') {
+                    // Ruta hardcodeada según la configuración en productos_style.css para .second-image
+                    productImage = '../img/descarga.avif';
+                }
+                // Fallback en caso de no encontrar ninguna imagen
+                if (!productImage) {
+                    productImage = 'https://placehold.co/300x300/CCCCCC/333333?text=Sin+Imagen';
+                }
+            }
+            // --- FIN: SOLUCIÓN DEL ERROR AL OBTENER LA RUTA DE LA IMAGEN ---
+
 
             // Añade una descripción y características de ejemplo para la página del producto
             let productDescription;
             let productFeatures;
-
-            if (productId === "iphone16pro") {
+            
+            // Se corrige el ID del iPhone 16 Pro Max para que coincida con el data-id del HTML
+            if (productId === "iphone16promax") { 
                 productDescription = "El iPhone más potente y sofisticado hasta la fecha. Con una pantalla más grande, cámaras de nivel profesional y un rendimiento inigualable.";
                 productFeatures = ["Cámara principal de 50 MP", "Pantalla OLED de 6.7\" con ProMotion", "Batería de larga duración", "Cuerpo de titanio"];
             } else if (productId === "iphonese") {
@@ -110,7 +143,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 id: productId,
                 name: productName,
                 price: productPrice,
-                image: productImage,
+                image: productImage, // Ahora contiene una ruta válida o un placeholder
                 description: productDescription,
                 features: productFeatures
             };
