@@ -366,6 +366,10 @@ main {
     background-image: url('../img/iphone-16-pro-max-1_6EFF873F24804524AAB5AAD8389E9913.jpg');
 }
 
+.product-card .second-image {
+    /* Nombre del archivo: iphone-16-pro-max-1_6EFF873F24804524AAB5AAD8389E9913.jpg */
+    background-image: url('../img/descarga.avif');
+}
 
 
 
