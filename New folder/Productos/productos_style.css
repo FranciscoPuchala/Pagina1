@@ -341,6 +341,42 @@ main {
     background-color: #007bff;
 }
 
+
+
+
+.product-image-placeholder {
+    width: 100%;
+    /* Mantiene el ratio para que se vea bien, simula la altura de la imagen que quitamos */
+    height: 250px; 
+    border-radius: 5px;
+    margin-bottom: 15px;
+    /* Propiedades clave para la imagen de fondo */
+    background-repeat: no-repeat;
+    background-position: center;
+    /* Ajusta la imagen para que cubra todo el contenedor */
+    background-size: contain; 
+    /* Fondo blanco para que la imagen se vea limpia */
+    background-color: white; 
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* Sutil sombra para el contenedor de la imagen */
+}
+
+/* 1. iPhone 16 Pro Max (primera imagen) */
+.product-card .first-image {
+    /* Nombre del archivo: iphone-16-pro-max-1_6EFF873F24804524AAB5AAD8389E9913.jpg */
+    background-image: url('../img/iphone-16-pro-max-1_6EFF873F24804524AAB5AAD8389E9913.jpg');
+}
+
+
+
+
+
+
+
+
+
+
+
+
 /* ==========================================================================
    Estilos Página del Carrito
    ========================================================================== */
