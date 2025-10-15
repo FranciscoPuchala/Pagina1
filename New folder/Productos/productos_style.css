@@ -598,71 +598,87 @@ main.cart-page {
    Media Queries para Diseño Responsivo
    ========================================================================== */
 @media (max-width: 768px) {
-    /* Encabezado */
     header {
         flex-direction: column;
-        gap: 10px;
-        padding: 10px 20px;
+        gap: 1rem;
+        padding: 1rem 2.5%;
+    }
+
+    /* Ajuste de Navegación */
+    nav {
+        /* Permite que el nav ocupe todo el ancho disponible */
+        flex: none; 
+        /* Quitar el padding extra de la versión de escritorio */
+        padding-left: 0; 
+        width: 100%;
     }
 
     nav ul {
-        gap: 10px;
         justify-content: center;
         flex-wrap: wrap;
+        width: 100%; /* Asegura que la lista ocupe todo el ancho del nav */
+    }
+
+    nav li {
+        margin-right: 10px; /* Reducir el espacio entre elementos de la lista */
+        margin-bottom: 5px; /* Añadir un poco de espacio vertical si se envuelven */
     }
 
     .search-and-cart {
-        width: 100%;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 10px;
+        width: 100%; /* Ocupa el ancho completo */
+        justify-content: center; /* Centra el contenido si hay espacio, o simplemente alinea */
+        margin-top: 10px; /* Separación del menú */
     }
 
     .search-and-cart input[type="text"] {
-        width: 100%;
-        max-width: 300px;
+        flex-grow: 1; /* Permite que el campo de búsqueda se expanda */
+        max-width: 300px; /* Limita el ancho máximo para que no sea excesivo */
     }
-
-    /* Productos */
-    .products-header h1 {
+    
+    main, main.cart-page, .contact-page-main, .products-page-main {
+        padding: 20px 2.5%;
+    }
+    
+    .hero-text h2 {
         font-size: 2em;
     }
 
-    .category-filters {
-        gap: 10px;
-    }
-    
-    /* === FIX CLAVE PARA IMÁGENES EN MÓVIL === */
-    .products-section {
-        /* Cambia a una sola columna para la vista de lista simple en móviles */
-        grid-template-columns: 1fr; 
+    /* Ajuste de la cuadrícula de productos para que se vea en 1 columna */
+    .product-grid {
+        grid-template-columns: 1fr; /* Una columna por defecto en móviles */
         gap: 20px;
-        padding: 0 5%; /* Añade un poco de padding horizontal */
     }
 
+    /* Reducir el padding de la tarjeta de producto para móviles */
     .product-card {
-        padding: 15px;
-        /* Asegura que la tarjeta use todo el ancho disponible */
-        width: 100%; 
-        box-sizing: border-box;
+        padding: 20px; 
+    }
+
+    .product-card img, .product-image-placeholder {
+        /* Asegurarse de que las imágenes se escalen bien */
+        max-height: 200px; 
+        height: auto;
+        width: 100%;
+        height: 250px;
+        border-radius: 5px;
+        margin-bottom: 15px;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        background-color: white;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        
     }
     
-    .product-image-placeholder {
-        /* Asegura que el placeholder/imagen tenga un tamaño visible */
-        height: 180px; 
-        /* Opcional: si quieres que tenga un ancho máximo más controlado, pero W:100% dentro de la tarjeta debería funcionar */
-        width: 100%; 
-    }
-    /* ======================================= */
-
-    /* Página del Carrito */
     .cart-container {
-        flex-direction: column; /* Apila el resumen y los ítems del carrito */
-        gap: 20px;
+        flex-direction: column;
+        gap: 20px; /* Reducir la separación entre secciones */
     }
 
     .cart-item {
-        flex-direction: column; /* Apila todos los elementos dentro del ítem */
+        /* Permite que los elementos de la tarjeta del carrito se envuelvan si es necesario */
+        flex-wrap: wrap; 
+        justify-content: center; /* Centra los elementos */
         text-align: center;
         gap: 10px;
     }
@@ -686,22 +702,6 @@ main.cart-page {
         width: 100%;
     }
 
-    /* Página de Producto Individual */
-    .product-detail-container {
-        flex-direction: column;
-        gap: 20px;
-        padding: 20px;
-    }
-
-    .product-info-area {
-        min-width: 100%;
-    }
-
-    .product-image-area {
-        min-width: 100%;
-    }
-
-    /* Footer */
     .footer-content {
         flex-direction: column;
         text-align: center;
@@ -720,11 +720,12 @@ main.cart-page {
         bottom: 10px;
         right: 10px;
         font-size: 0.9em;
-        width: calc(100% - 40px); /* Ajusta el ancho en móvil */
+        width: calc(100% - 40px); /* Ocupa casi todo el ancho */
         text-align: center;
+        left: 50%;
+        transform: translateX(-50%);
     }
 }
-
 
 /* Media Query adicional para tabletas (más de 480px) */
 @media (min-width: 481px) and (max-width: 768px) {
