@@ -31,17 +31,23 @@
         <section id="product-details-container" class="product-details-container">
             
             <div class="product-gallery">
-                <img src="../img/iphone-16-pro-max-1_6EFF873F24804524AAB5AAD8389E9913.jpg" alt="iPhone 16 Pro Max" class="main-image">
+                <!-- **CAMBIO: Se añade un ID para poder actualizar la imagen desde JavaScript** -->
+                <img src="" alt="Imagen del producto" id="product-image">
             </div>
+
             <div class="product-info">
-                <h1>iPhone 16 Pro Max</h1>
-                <p class="price">$1.299</p>
+                <!-- Estos elementos serán rellenados por JavaScript -->
+                <h2 id="product-name">iPhone 16 Pro Max</h2>
+                <p class="price" id="product-price">$1299</p>
+
                 <div class="description-section">
                     <h3>Descripción</h3>
-                    <p>Aquí va una descripción detallada del iPhone 16 Pro Max.</p>
-                    <h3>Características Destacadas</h3>
-                    <ul>
-                        <li>Chip Súper Ultra Mega Rápido</li>
+                    <p id="product-description">Experimenta el poder inigualable y el diseño de vanguardia. Este producto redefine lo que esperas de la tecnología, ofreciendo un rendimiento excepcional y una integración perfecta con tu ecosistema digital.</p>
+                </div>
+
+                <div class="features-section">
+                    <h3>Características destacadas</h3>
+                    <ul id="product-features">
                         <li>Cámara principal de 50 MP</li>
                         <li>Pantalla OLED de 6.7" con ProMotion</li>
                         <li>Batería de larga duración</li>

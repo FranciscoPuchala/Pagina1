@@ -1,6 +1,7 @@
 // Selecciona los elementos del DOM necesarios.
 const productDetailSection = document.getElementById('product-details-container');
 const cartButton = document.querySelector('.cart-button');
+const productImageElement = document.getElementById('product-image'); // Elemento de imagen
 
 // Función para mostrar una notificación temporal al usuario.
 const showNotification = (message) => {
@@ -28,68 +29,89 @@ const updateCartCount = () => {
     cartButton.textContent = `🛒 Carrito (${totalItems})`;
 };
 
+// Función para rellenar los detalles del producto en la página.
+const renderProductDetails = (selectedProduct) => {
+    document.getElementById('product-name').textContent = selectedProduct.name;
+    document.getElementById('product-price').textContent = `$${selectedProduct.price.toFixed(2)}`;
+    document.getElementById('product-description').textContent = selectedProduct.description;
+
+    // LÓGICA DE LA IMAGEN: Carga la imagen del producto seleccionado
+    if (productImageElement && selectedProduct.image) {
+        // **AJUSTE CLAVE AQUÍ:** Verificar si la imagen es una URL externa (placeholder)
+        const isExternalUrl = selectedProduct.image.startsWith('http://') || selectedProduct.image.startsWith('https://');
+
+        if (isExternalUrl) {
+            // Si es una URL externa (como los placeholders), la usa directamente.
+            productImageElement.src = selectedProduct.image;
+        } else {
+            // Si es un nombre de archivo (imágenes locales), añade el prefijo de la carpeta.
+            productImageElement.src = `../img/${selectedProduct.image}`;
+        }
+        productImageElement.alt = `Imagen de ${selectedProduct.name}`;
+    }
+    
+    // Rellena las características
+    const featuresList = document.getElementById('product-features');
+    featuresList.innerHTML = ''; // Limpia las características existentes
+    selectedProduct.features.forEach(feature => {
+        const li = document.createElement('li');
+        li.textContent = feature;
+        featuresList.appendChild(li);
+    });
+
+    // Añade el evento para el botón "Añadir al carrito"
+    const addToCartButton = document.querySelector('.add-to-cart-button');
+    if (addToCartButton) {
+        addToCartButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            // Lógica para añadir al carrito
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            
+            const existingProductIndex = cart.findIndex(item => item.id === selectedProduct.id);
+
+            if (existingProductIndex !== -1) {
+                cart[existingProductIndex].quantity += 1;
+            } else {
+                cart.push({
+                    id: selectedProduct.id,
+                    name: selectedProduct.name,
+                    price: selectedProduct.price,
+                    image: selectedProduct.image,
+                    quantity: 1
+                });
+            }
+            
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+            showNotification(`${selectedProduct.name} ha sido añadido al carrito.`);
+        });
+    }
+};
+
 // Inicializa la página al cargar el DOM.
 document.addEventListener('DOMContentLoaded', () => {
+    // Selecciona el elemento de imagen para asegurarse de que exista antes de intentar usarlo.
+    const productImageElement = document.getElementById('product-image');
+
+    // Muestra una imagen de fallback si la imagen no se carga (útil para depurar)
+    if (productImageElement) {
+        productImageElement.onerror = function() {
+            console.error("Error al cargar la imagen. Revisar la ruta en localStorage.");
+            // Opcionalmente puedes poner un placeholder si falla la carga:
+            // this.src = 'https://via.placeholder.com/400x400/FF0000/FFFFFF?text=Error+Carga+Imagen';
+            this.style.display = 'none'; // Ocultar si falla completamente
+        };
+    }
+
     updateCartCount();
     
-    // Obtiene el producto seleccionado del almacenamiento local.
+    // Obtiene el producto seleccionado de localStorage (guardado desde la página de inicio).
     const selectedProduct = JSON.parse(localStorage.getItem('selectedProduct'));
 
-    // Verifica si hay un producto seleccionado.
     if (selectedProduct) {
-        // Genera el HTML de los detalles del producto de forma dinámica.
-        productDetailSection.innerHTML = `
-            <div class="product-gallery">
-                <img src="${selectedProduct.image}" alt="${selectedProduct.name}">
-            </div>
-            <div class="product-info">
-                <h1 id="product-name">${selectedProduct.name}</h1>
-                <p class="product-price" id="product-price">$${selectedProduct.price}</p>
-                <p class="product-description" id="product-description">${selectedProduct.description}</p>
-                <div class="product-features">
-                    <h3>Características destacadas:</h3>
-                    <ul>
-                        ${selectedProduct.features.map(feature => `<li>${feature}</li>`).join('')}
-                    </ul>
-                </div>
-                <a href="#" class="add-to-cart-button" data-id="${selectedProduct.id}">Añadir al carrito</a>
-            </div>
-        `;
-        
-        // Asigna el evento de clic al botón "Añadir al carrito" de la página de detalles.
-        const addToCartButton = document.querySelector('.add-to-cart-button');
-        if (addToCartButton) {
-            addToCartButton.addEventListener('click', (event) => {
-                event.preventDefault();
-                // Obtiene el carrito de localStorage, si no existe.
-                let cart = JSON.parse(localStorage.getItem('cart')) || [];
-                // Busca si el producto ya está en el carrito.
-                const existingProductIndex = cart.findIndex(item => item.id === selectedProduct.id);
-
-                if (existingProductIndex !== -1) {
-                    // Si el producto ya existe, solo incrementa su cantidad.
-                    cart[existingProductIndex].quantity += 1;
-                } else {
-                    // Si no existe, añade el nuevo producto al carrito con una cantidad de 1.
-                    cart.push({
-                        id: selectedProduct.id,
-                        name: selectedProduct.name,
-                        price: selectedProduct.price,
-                        image: selectedProduct.image,
-                        quantity: 1
-                    });
-                }
-                
-                // Guarda el carrito actualizado en localStorage.
-                localStorage.setItem('cart', JSON.stringify(cart));
-                // Actualiza el contador del carrito en la interfaz.
-                updateCartCount();
-                // Muestra una notificación al usuario.
-                showNotification(`${selectedProduct.name} ha sido añadido al carrito.`);
-            });
-        }
+        renderProductDetails(selectedProduct);
     } else {
         // Si no se encontró un producto, muestra un mensaje de error.
-        productDetailSection.innerHTML = `<p>Producto no encontrado.</p>`;
+        productDetailSection.innerHTML = `<p>Producto no encontrado. Por favor, vuelve a la <a href="../Inicio/pagina_inicio.html">página de inicio</a>.</p>`;
     }
 });
