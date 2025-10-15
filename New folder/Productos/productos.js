@@ -99,6 +99,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 } else if (productId === 'iphonese') {
                     // Ruta hardcodeada según la configuración en productos_style.css para .second-image
                     productImage = '../img/descarga.avif';
+                }else if (productId === 'ipadpro') {
+                    // Ruta hardcodeada según la configuración en productos_style.css para .second-image
+                    productImage = '../img/D_NQ_NP_758447-MLA46975173385_082021-O.webp';
+                }else if (productId === 'macbookair15') {
+                    // Ruta hardcodeada según la configuración en productos_style.css para .second-image
+                    productImage = '../img/D_NQ_NP_977736-MLA83571171203_042025-O.webp';
+                }else if (productId === 'applewatchseries10') {
+                    // Ruta hardcodeada según la configuración en productos_style.css para .second-image
+                    productImage = '../img/D_Q_NP_2X_882490-MLU77852262960_072024-P.webp';
+                }else if (productId === 'airpodspro') {
+                    // Ruta hardcodeada según la configuración en productos_style.css para .second-image
+                    productImage = '../img/apple-airpods-pro-segunda-generacion.jpg';
+                }else if (productId === 'cargador_magsafe') {
+                    // Ruta hardcodeada según la configuración en productos_style.css para .second-image
+                    productImage = '../img/D_NQ_NP_692212-MLU70775490991_072023-O.webp';
                 }
                 // Fallback en caso de no encontrar ninguna imagen
                 if (!productImage) {
