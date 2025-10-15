@@ -375,28 +375,48 @@ footer {
 @media (max-width: 768px) {
     header {
         flex-direction: column;
-        text-align: center;
+        gap: 1rem;
+        padding: 1rem 2.5%;
+    }
+
+    /* Ajuste de Navegación */
+    nav {
+        /* Permite que el nav ocupe todo el ancho disponible */
+        flex: none; 
+        /* Quitar el padding extra de la versión de escritorio */
+        padding-left: 0; 
+        width: 100%;
     }
 
     nav ul {
-        flex-direction: column;
-        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        width: 100%; /* Asegura que la lista ocupe todo el ancho del nav */
     }
 
     nav li {
-        margin: 10px 0;
+        margin-right: 10px; /* Reducir el espacio entre elementos de la lista */
+        margin-bottom: 5px; /* Añadir un poco de espacio vertical si se envuelven */
     }
 
-    .hero-text h2 {
-        /*
-         * NOTA: La línea original que causaba el problema era:
-         * font-size: 5em;
-         * Ha sido eliminada o reemplazada por el siguiente ajuste:
-         */
-        font-size: 8vw; /* Ajusta el tamaño de la fuente al 8% del ancho del viewport */
-        line-height: 1.1; /* Aseguramos que se mantenga el line-height */
+    .search-and-cart {
+        width: 100%; /* Ocupa el ancho completo */
+        justify-content: center; /* Centra el contenido si hay espacio, o simplemente alinea */
+        margin-top: 10px; /* Separación del menú */
     }
-    /* ========================== */
+
+    .search-and-cart input[type="text"] {
+        flex-grow: 1; /* Permite que el campo de búsqueda se expanda */
+        max-width: 300px; /* Limita el ancho máximo para que no sea excesivo */
+    }
+    
+    main, main.cart-page, .contact-page-main, .products-page-main {
+        padding: 20px 2.5%;
+    }
+    
+    .hero-text h2 {
+        font-size: 2em;
+    }
 }
 
     
