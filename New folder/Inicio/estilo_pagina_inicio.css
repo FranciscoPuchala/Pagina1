@@ -115,34 +115,58 @@ main {
 .hero {
     position: relative;
     text-align: center;
-    color: #fff;
-    margin-bottom: 40px;
-    
+    color: white;
+    margin-bottom: 50px;
+    overflow: hidden; /* Asegura que la imagen no desborde */
 }
 
-
-.hero img {
+#img_fondo {
     width: 100%;
-    height: auto;
-    border-radius: 10px;
-    filter: brightness(70%);
+    /* Altura automática para mantener la proporción */
+    height: auto; 
+    display: block;
+    filter: brightness(60%);
+    /* Propiedad clave para responsive: cubre el contenedor sin estirarse */
+    object-fit: cover; 
 }
 
 .hero-text {
-    margin-top: 9px;
     position: absolute;
-    top: 23%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 100%;
-    bottom: 6%;
-    height: 52%;
+    z-index: 10;
+    width: 90%;
+    max-width: 1000px;
 }
 
 .hero-text h2 {
-    font-size: 3em;
-    margin-top: 10%;
-    color: white;
+    font-size: 3.5em; /* Tamaño base para escritorio */
+    margin: 0 0 20px 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    line-height: 1.1;
+}
+
+.hero-text p {
+    font-size: 1.5em;
+    margin-bottom: 30px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.hero-button {
+    background-color: white;
+    color: #007bff;
+    padding: 12px 30px;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 700;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    display: inline-block;
+}
+
+.hero-button:hover {
+    background-color: #e0e0e0;
 }
 
 .cta-button {
