@@ -603,23 +603,124 @@ main.cart-page {
         gap: 1rem;
         padding: 1rem 2.5%;
     }
+
+    /* Ajuste de Navegación */
+    nav {
+        /* Permite que el nav ocupe todo el ancho disponible */
+        flex: none; 
+        /* Quitar el padding extra de la versión de escritorio */
+        padding-left: 0; 
+        width: 100%;
+    }
+
     nav ul {
         justify-content: center;
         flex-wrap: wrap;
+        width: 100%; /* Asegura que la lista ocupe todo el ancho del nav */
     }
+
+    nav li {
+        margin-right: 10px; /* Reducir el espacio entre elementos de la lista */
+        margin-bottom: 5px; /* Añadir un poco de espacio vertical si se envuelven */
+    }
+
+    .search-and-cart {
+        width: 100%; /* Ocupa el ancho completo */
+        justify-content: center; /* Centra el contenido si hay espacio, o simplemente alinea */
+        margin-top: 10px; /* Separación del menú */
+    }
+
+    .search-and-cart input[type="text"] {
+        flex-grow: 1; /* Permite que el campo de búsqueda se expanda */
+        max-width: 300px; /* Limita el ancho máximo para que no sea excesivo */
+    }
+    
     main, main.cart-page, .contact-page-main, .products-page-main {
         padding: 20px 2.5%;
     }
+    
     .hero-text h2 {
         font-size: 2em;
     }
-    .cart-container {
-        flex-direction: column;
+
+    /* Ajuste de la cuadrícula de productos para que se vea en 1 columna */
+    .product-grid {
+        grid-template-columns: 1fr; /* Una columna por defecto en móviles */
+        gap: 20px;
+    }
+
+    /* Reducir el padding de la tarjeta de producto para móviles */
+    .product-card {
+        padding: 20px; 
+    }
+
+    .product-card img, .product-image-placeholder {
+        /* Asegurarse de que las imágenes se escalen bien */
+        max-height: 200px; 
+        height: auto;
     }
     
+    .cart-container {
+        flex-direction: column;
+        gap: 20px; /* Reducir la separación entre secciones */
+    }
+
+    .cart-item {
+        /* Permite que los elementos de la tarjeta del carrito se envuelvan si es necesario */
+        flex-wrap: wrap; 
+        justify-content: center; /* Centra los elementos */
+        text-align: center;
+        gap: 10px;
+    }
+
+    .item-info-wrapper {
+        flex-direction: column; /* Apila la imagen y la info del producto en el carrito */
+        text-align: center;
+        width: 100%; /* Ocupa todo el ancho disponible para su contenido */
+    }
+
+    .quantity-controls, .remove-item {
+        margin: 10px auto 0; /* Centrar y separar los controles de cantidad y eliminar */
+    }
+
+    .cart-item .price {
+        margin-top: 10px; /* Separar el precio del resto en el modo apilado */
+    }
+
+    .cart-summary {
+        min-width: unset; /* Eliminar el min-width forzado */
+        width: 100%;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-section {
+        min-width: 100%;
+    }
+
+    .footer-section h3 {
+        border-bottom: none; /* Simplificar el borde en móvil */
+        padding-bottom: 0;
+    }
+
     .notification-message {
         bottom: 10px;
         right: 10px;
         font-size: 0.9em;
+        width: calc(100% - 40px); /* Ocupa casi todo el ancho */
+        text-align: center;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
+/* Media Query adicional para tabletas (más de 480px) */
+@media (min-width: 481px) and (max-width: 768px) {
+    .product-grid {
+        /* Muestra 2 columnas si el ancho lo permite, para un mejor uso del espacio en tabletas */
+        grid-template-columns: repeat(2, 1fr); 
     }
 }
