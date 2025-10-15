@@ -62,7 +62,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const productId = card.getAttribute('data-id');
             const productName = card.querySelector('h3').textContent;
             const productPriceText = card.querySelector('.price').textContent;
-            const productPrice = parseFloat(productPriceText.replace('$', '').replace(',', ''));
+            
+            // CORRECCIÓN: Eliminar el punto (separador de miles) antes de convertir a número.
+            const cleanedPriceText = productPriceText.replace('$', '').replace('.', ''); 
+            const productPrice = parseFloat(cleanedPriceText);
             
             // Obtiene la imagen del mapa
             let productImage = productImageMap[productId];
@@ -132,7 +135,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const productId = productCard.dataset.id;
             const productName = productCard.querySelector('h3').textContent;
             const productPriceText = productCard.querySelector('.price').textContent;
-            const productPrice = parseFloat(productPriceText.replace('$', ''));
+            
+            // CORRECCIÓN: Eliminar el punto (separador de miles) antes de convertir a número.
+            const cleanedPriceText = productPriceText.replace('$', '').replace('.', '');
+            const productPrice = parseFloat(cleanedPriceText);
             
             // **OBTENCIÓN DE IMAGEN MODIFICADA:** // Usa el mapa para obtener la URL. Si no existe en el mapa (ej: Accesorios), 
             // intenta obtenerla de la etiqueta <img> (si está presente).
@@ -172,7 +178,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const productId = card.dataset.id;
             const productName = card.querySelector('h3').textContent;
             const productPriceText = card.querySelector('.price').textContent;
-            const productPrice = parseFloat(productPriceText.replace('$', ''));
+            
+            // CORRECCIÓN: Eliminar el punto (separador de miles) antes de convertir a número.
+            const cleanedPriceText = productPriceText.replace('$', '').replace('.', '');
+            const productPrice = parseFloat(cleanedPriceText);
             
             // **OBTENCIÓN DE IMAGEN MODIFICADA:** Usa el mapa o la etiqueta <img>.
             let productImage = productImageMap[productId];
