@@ -140,11 +140,14 @@ main {
     max-width: 1000px;
 }
 
+
 .hero-text h2 {
-    font-size: 3.5em; /* Tamaño base para escritorio */
+    /* Mantenemos el tamaño base para escritorio (o pantallas grandes) */
+    font-size: 3.5em; 
     margin: 0 0 20px 0;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     line-height: 1.1;
+    color: white;
 }
 
 .hero-text p {
@@ -384,10 +387,18 @@ footer {
         margin: 10px 0;
     }
 
-    
+    .hero-text h2 {
+        /*
+         * NOTA: La línea original que causaba el problema era:
+         * font-size: 5em;
+         * Ha sido eliminada o reemplazada por el siguiente ajuste:
+         */
+        font-size: 8vw; /* Ajusta el tamaño de la fuente al 8% del ancho del viewport */
+        line-height: 1.1; /* Aseguramos que se mantenga el line-height */
+    }
+    /* ========================== */
 }
 
-    .hero-text h2 {
-        font-size: 5em;
-    }
+    
+
 
