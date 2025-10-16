@@ -417,6 +417,10 @@ footer {
     .hero-text h2 {
         font-size: 2em;
     }
+
+    #img_fondo {
+        height: 514px;
+    }
 }
 
     
