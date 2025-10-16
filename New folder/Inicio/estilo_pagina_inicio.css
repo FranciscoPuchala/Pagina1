@@ -118,6 +118,7 @@ main {
     color: white;
     margin-bottom: 50px;
     overflow: hidden; /* Asegura que la imagen no desborde */
+    
 }
 
 #img_fondo {
@@ -128,6 +129,8 @@ main {
     filter: brightness(60%);
     /* Propiedad clave para responsive: cubre el contenedor sin estirarse */
     object-fit: cover; 
+    padding-top: 20px 5%;
+    
 }
 
 .hero-text {
