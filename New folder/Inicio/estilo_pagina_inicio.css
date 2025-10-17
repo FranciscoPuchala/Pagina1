@@ -423,7 +423,7 @@ footer {
 
     #img_fondo {
         /* Nuevo valor para hacer la imagen más larga en móvil */
-        height: 130vh; 
+        height: 150vh; 
         /* Aseguramos que la imagen cubra la nueva altura sin distorsionarse */
         object-fit: cover;
     }
