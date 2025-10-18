@@ -47,67 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     
-    // Función para manejar la navegación a la página de producto
-    productCards.forEach(card => {
-        card.addEventListener('click', (e) => {
-            // Si el clic fue en el botón 'Añadir al carrito', no navegamos.
-            if (e.target.classList.contains('add-to-cart')) {
-                return;
-            }
-
-            // Evita la navegación si el clic fue en un enlace diferente al producto
-            e.preventDefault(); 
-            
-            // Obtención de datos del producto
-            const productId = card.getAttribute('data-id');
-            const productName = card.querySelector('h3').textContent;
-            const productPriceText = card.querySelector('.price').textContent;
-            
-            // CORRECCIÓN: Eliminar el punto (separador de miles) antes de convertir a número.
-            const cleanedPriceText = productPriceText.replace('$', '').replace('.', ''); 
-            const productPrice = parseFloat(cleanedPriceText);
-            
-            // Obtiene la imagen del mapa
-            let productImage = productImageMap[productId];
-            
-            // Si no está en el mapa, intenta obtenerla de la etiqueta <img> (aunque ya no se usa para los principales)
-            if (!productImage) {
-                const imgElement = card.querySelector('img');
-                productImage = imgElement ? imgElement.src : 'placeholder.jpg'; 
-            }
-
-            // Datos de ejemplo para la página de detalle (ajustados para cada producto si es necesario, 
-            // pero manteniendo el ejemplo genérico para la demostración)
-            let productDescription = "Experimenta el poder inigualable y el diseño de vanguardia. Este producto redefine lo que esperas de la tecnología.";
-            let productFeatures = [
-                "Características estándar",
-                "Integración total con Apple Ecosystem",
-                "Diseño premium"
-            ];
-            
-            if (productId === 'iphone16promax') {
-                 productDescription = "El iPhone 16 Pro Max, con el chip A-Biónico de última generación y sistema de cámara Pro, ofrece un rendimiento sin precedentes.";
-                 productFeatures = ["Chip A-Biónico", "Pantalla ProMotion", "Sistema de cámara triple de 48MP"];
-            } else if (productId === 'funda_silicona') {
-                 productDescription = "Funda de silicona con MagSafe. Suave al tacto y diseñada para proteger tu iPhone de caídas y rasguños.";
-                 productFeatures = ["Material de silicona", "Compatible con MagSafe", "Interior de microfibra"];
-            }
-
-            const selectedProduct = {
-                id: productId,
-                name: productName,
-                price: productPrice,
-                image: productImage, // El nombre del archivo o la URL de placeholder
-                description: productDescription,
-                features: productFeatures
-            };
-            
-            // Guarda el producto seleccionado y redirige.
-            localStorage.setItem('selectedProduct', JSON.stringify(selectedProduct));
-            // Redirige a la página de producto.
-            window.location.href = `../Producto/pagina_producto.html`;
-        });
-    });
+    
     
     /// Función para actualizar el contador del carrito en el encabezado.
     const updateCartCount = () => {
@@ -192,6 +132,68 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Datos de ejemplo para la página de detalle
             
+        });
+    });
+
+    // Función para manejar la navegación a la página de producto
+    productCards.forEach(card => {
+        card.addEventListener('click', (e) => {
+            // Si el clic fue en el botón 'Añadir al carrito', no navegamos.
+            if (e.target.classList.contains('add-to-cart')) {
+                return;
+            }
+
+            // Evita la navegación si el clic fue en un enlace diferente al producto
+            e.preventDefault(); 
+            
+            // Obtención de datos del producto
+            const productId = card.getAttribute('data-id');
+            const productName = card.querySelector('h3').textContent;
+            const productPriceText = card.querySelector('.price').textContent;
+            
+            // CORRECCIÓN: Eliminar el punto (separador de miles) antes de convertir a número.
+            const cleanedPriceText = productPriceText.replace('$', '').replace('.', ''); 
+            const productPrice = parseFloat(cleanedPriceText);
+            
+            // Obtiene la imagen del mapa
+            let productImage = productImageMap[productId];
+            
+            // Si no está en el mapa, intenta obtenerla de la etiqueta <img> (aunque ya no se usa para los principales)
+            if (!productImage) {
+                const imgElement = card.querySelector('img');
+                productImage = imgElement ? imgElement.src : 'placeholder.jpg'; 
+            }
+
+            // Datos de ejemplo para la página de detalle (ajustados para cada producto si es necesario, 
+            // pero manteniendo el ejemplo genérico para la demostración)
+            let productDescription = "Experimenta el poder inigualable y el diseño de vanguardia. Este producto redefine lo que esperas de la tecnología.";
+            let productFeatures = [
+                "Características estándar",
+                "Integración total con Apple Ecosystem",
+                "Diseño premium"
+            ];
+            
+            if (productId === 'iphone16promax') {
+                 productDescription = "El iPhone 16 Pro Max, con el chip A-Biónico de última generación y sistema de cámara Pro, ofrece un rendimiento sin precedentes.";
+                 productFeatures = ["Chip A-Biónico", "Pantalla ProMotion", "Sistema de cámara triple de 48MP"];
+            } else if (productId === 'funda_silicona') {
+                 productDescription = "Funda de silicona con MagSafe. Suave al tacto y diseñada para proteger tu iPhone de caídas y rasguños.";
+                 productFeatures = ["Material de silicona", "Compatible con MagSafe", "Interior de microfibra"];
+            }
+
+            const selectedProduct = {
+                id: productId,
+                name: productName,
+                price: productPrice,
+                image: productImage, // El nombre del archivo o la URL de placeholder
+                description: productDescription,
+                features: productFeatures
+            };
+            
+            // Guarda el producto seleccionado y redirige.
+            localStorage.setItem('selectedProduct', JSON.stringify(selectedProduct));
+            // Redirige a la página de producto.
+            window.location.href = `../Producto/pagina_producto.html`;
         });
     });
 });
