@@ -5,15 +5,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const cartButton = document.querySelector('.cart-button');
 
     // Mapeo de IDs de producto a sus URLs de imagen.
-    // Usamos nombres de archivo para los productos que tienen imágenes locales 
-    // y URLs de placeholder completas para los accesorios.
+    // Se corrige el path para que sea relativo al carrito y a la pagina de producto.
     const productImageMap = {
-        'iphone16promax': 'iphone-16-pro-max-1_6EFF873F24804524AAB5AAD8389E9913.jpg',
-        'ipadpro': 'D_NQ_NP_758447-MLA46975173385_082021-O.webp',
-        'applewatchultra2': 'D_Q_NP_2X_882490-MLU77852262960_072024-P.webp',
-        // **CORRECCIÓN:** URLs de placeholder completas y válidas.
-        'funda_silicona': 'images (3).jpeg', 
-        'cargador_magsafe': 'D_NQ_NP_692212-MLU70775490991_072023-O.webp'
+        'iphone16promax': '../img/iphone-16-pro-max-1_6EFF873F24804524AAB5AAD8389E9913.jpg',
+        'ipadpro': '../img/D_NQ_NP_758447-MLA46975173385_082021-O.webp',
+        'applewatchultra2': '../img/D_Q_NP_2X_882490-MLU77852262960_072024-P.webp',
+        'funda_silicona': '../img/images (3).jpeg',
+        'cargador_magsafe': '../img/D_NQ_NP_692212-MLU70775490991_072023-O.webp'
     };
 
     // Función para mostrar una notificación temporal al usuario.
@@ -46,9 +44,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 2000);
     };
 
-    
-    
-    
     /// Función para actualizar el contador del carrito en el encabezado.
     const updateCartCount = () => {
         // Obtiene el carrito de localStorage; si no existe, usa un array vacío.
@@ -67,36 +62,35 @@ document.addEventListener('DOMContentLoaded', () => {
         button.addEventListener('click', (event) => {
             // Detiene la propagación y previene la navegación del enlace.
             event.stopPropagation();
-            event.preventDefault(); 
+            event.preventDefault();
 
             const productCard = button.closest('.product-card');
-            
+
             // Recolectar la información del producto.
             const productId = productCard.dataset.id;
             const productName = productCard.querySelector('h3').textContent;
             const productPriceText = productCard.querySelector('.price').textContent;
-            
+
             // CORRECCIÓN: Eliminar el punto (separador de miles) antes de convertir a número.
             const cleanedPriceText = productPriceText.replace('$', '').replace('.', '');
             const productPrice = parseFloat(cleanedPriceText);
-            
-            // **OBTENCIÓN DE IMAGEN MODIFICADA:** // Usa el mapa para obtener la URL. Si no existe en el mapa (ej: Accesorios), 
-            // intenta obtenerla de la etiqueta <img> (si está presente).
+
+            // **OBTENCIÓN DE IMAGEN MODIFICADA:** // Usa el mapa para obtener la URL.
             let productImage = productImageMap[productId];
             if (!productImage) {
                 const imgElement = productCard.querySelector('img');
                 productImage = imgElement ? imgElement.src : 'placeholder.jpg';
             }
-            
+
             const productToAdd = {
                 id: productId,
                 name: productName,
                 price: productPrice,
-                image: productImage, 
+                image: productImage,
             };
 
             let cart = JSON.parse(localStorage.getItem('cart')) || [];
-            
+
             const existingProductIndex = cart.findIndex(item => item.id === productToAdd.id);
 
             if (existingProductIndex !== -1) {
@@ -118,54 +112,19 @@ document.addEventListener('DOMContentLoaded', () => {
             const productId = card.dataset.id;
             const productName = card.querySelector('h3').textContent;
             const productPriceText = card.querySelector('.price').textContent;
-            
+
             // CORRECCIÓN: Eliminar el punto (separador de miles) antes de convertir a número.
             const cleanedPriceText = productPriceText.replace('$', '').replace('.', '');
             const productPrice = parseFloat(cleanedPriceText);
-            
+
             // **OBTENCIÓN DE IMAGEN MODIFICADA:** Usa el mapa o la etiqueta <img>.
             let productImage = productImageMap[productId];
             if (!productImage) {
                 const imgElement = card.querySelector('img');
-                productImage = imgElement ? imgElement.src : 'placeholder.jpg'; 
+                productImage = imgElement ? imgElement.src : 'placeholder.jpg';
             }
 
             // Datos de ejemplo para la página de detalle
-            
-        });
-    });
-
-    // Función para manejar la navegación a la página de producto
-    productCards.forEach(card => {
-        card.addEventListener('click', (e) => {
-            // Si el clic fue en el botón 'Añadir al carrito', no navegamos.
-            if (e.target.classList.contains('add-to-cart')) {
-                return;
-            }
-
-            // Evita la navegación si el clic fue en un enlace diferente al producto
-            e.preventDefault(); 
-            
-            // Obtención de datos del producto
-            const productId = card.getAttribute('data-id');
-            const productName = card.querySelector('h3').textContent;
-            const productPriceText = card.querySelector('.price').textContent;
-            
-            // CORRECCIÓN: Eliminar el punto (separador de miles) antes de convertir a número.
-            const cleanedPriceText = productPriceText.replace('$', '').replace('.', ''); 
-            const productPrice = parseFloat(cleanedPriceText);
-            
-            // Obtiene la imagen del mapa
-            let productImage = productImageMap[productId];
-            
-            // Si no está en el mapa, intenta obtenerla de la etiqueta <img> (aunque ya no se usa para los principales)
-            if (!productImage) {
-                const imgElement = card.querySelector('img');
-                productImage = imgElement ? imgElement.src : 'placeholder.jpg'; 
-            }
-
-            // Datos de ejemplo para la página de detalle (ajustados para cada producto si es necesario, 
-            // pero manteniendo el ejemplo genérico para la demostración)
             let productDescription = "Experimenta el poder inigualable y el diseño de vanguardia. Este producto redefine lo que esperas de la tecnología.";
             let productFeatures = [
                 "Características estándar",
@@ -189,7 +148,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 description: productDescription,
                 features: productFeatures
             };
-            
+
             // Guarda el producto seleccionado y redirige.
             localStorage.setItem('selectedProduct', JSON.stringify(selectedProduct));
             // Redirige a la página de producto.

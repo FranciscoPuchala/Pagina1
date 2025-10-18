@@ -37,19 +37,10 @@ const renderProductDetails = (selectedProduct) => {
 
     // LÓGICA DE LA IMAGEN: Carga la imagen del producto seleccionado
     if (productImageElement && selectedProduct.image) {
-        // **AJUSTE CLAVE AQUÍ:** Verificar si la imagen es una URL externa (placeholder)
-        const isExternalUrl = selectedProduct.image.startsWith('http://') || selectedProduct.image.startsWith('https://');
-
-        if (isExternalUrl) {
-            // Si es una URL externa (como los placeholders), la usa directamente.
-            productImageElement.src = selectedProduct.image;
-        } else {
-            // Si es un nombre de archivo (imágenes locales), añade el prefijo de la carpeta.
-            productImageElement.src = `../img/${selectedProduct.image}`;
-        }
+        productImageElement.src = selectedProduct.image;
         productImageElement.alt = `Imagen de ${selectedProduct.name}`;
     }
-    
+
     // Rellena las características
     const featuresList = document.getElementById('product-features');
     featuresList.innerHTML = ''; // Limpia las características existentes
@@ -66,7 +57,7 @@ const renderProductDetails = (selectedProduct) => {
             e.preventDefault();
             // Lógica para añadir al carrito
             let cart = JSON.parse(localStorage.getItem('cart')) || [];
-            
+
             const existingProductIndex = cart.findIndex(item => item.id === selectedProduct.id);
 
             if (existingProductIndex !== -1) {
@@ -80,7 +71,7 @@ const renderProductDetails = (selectedProduct) => {
                     quantity: 1
                 });
             }
-            
+
             localStorage.setItem('cart', JSON.stringify(cart));
             updateCartCount();
             showNotification(`${selectedProduct.name} ha sido añadido al carrito.`);
@@ -104,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     updateCartCount();
-    
+
     // Obtiene el producto seleccionado de localStorage (guardado desde la página de inicio).
     const selectedProduct = JSON.parse(localStorage.getItem('selectedProduct'));
 

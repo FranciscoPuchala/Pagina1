@@ -112,6 +112,10 @@ footer {
     padding: 40px;
     padding-bottom: 0.3%;
     border-top: 5px solid #007bff;
+    position: fixed; /* Fixes the position relative to the viewport */
+    bottom: 0;       /* Aligns the footer to the bottom edge */
+    width: 100%;     /* Ensures it spans the full width of the screen */
+    z-index: 1000;   /* Optional: Ensures it appears above other elements */
 }
 
 .footer-content {
