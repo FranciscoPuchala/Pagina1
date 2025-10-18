@@ -193,7 +193,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Guarda el producto seleccionado y redirige.
             localStorage.setItem('selectedProduct', JSON.stringify(selectedProduct));
             // Redirige a la página de producto.
-            window.location.href = `../Producto/pagina_producto.html`;
+            window.location.href = `./Producto/pagina_producto.html`;
         });
     });
 });

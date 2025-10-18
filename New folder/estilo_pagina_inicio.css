@@ -253,29 +253,29 @@ h2 {
 /* 1. iPhone 16 Pro Max (primera imagen) */
 .product-card .first-image {
     /* Nombre del archivo: iphone-16-pro-max-1_6EFF873F24804524AAB5AAD8389E9913.jpg */
-    background-image: url('../img/iphone-16-pro-max-1_6EFF873F24804524AAB5AAD8389E9913.jpg');
+    background-image: url('./img/iphone-16-pro-max-1_6EFF873F24804524AAB5AAD8389E9913.jpg');
 }
 
 /* 2. iPad Pro (segunda imagen) */
 .product-card .second-image {
     /* Nombre del archivo: D_NQ_NP_758447-MLA46975173385_082021-O.webp */
-    background-image: url('../img/D_NQ_NP_758447-MLA46975173385_082021-O.webp');
+    background-image: url('./img/D_NQ_NP_758447-MLA46975173385_082021-O.webp');
 }
 
 /* 3. Apple Watch Ultra 2 (tercera imagen) */
 .product-card .third-image {
     /* Nombre del archivo: D_Q_NP_2X_882490-MLU77852262960_072024-P.webp */
-    background-image: url('../img/D_Q_NP_2X_882490-MLU77852262960_072024-P.webp');
+    background-image: url('./img/D_Q_NP_2X_882490-MLU77852262960_072024-P.webp');
 }
 
 .product-card .fourth-image {
     /* Nombre del archivo: D_Q_NP_2X_882490-MLU77852262960_072024-P.webp */
-    background-image: url('../img/images\ \(3\).jpeg');
+    background-image: url('./img/images\ \(3\).jpeg');
 }
 
 .product-card .fifth-image {
     /* Nombre del archivo: D_Q_NP_2X_882490-MLU77852262960_072024-P.webp */
-    background-image: url('../img/D_NQ_NP_692212-MLU70775490991_072023-O.webp');
+    background-image: url('./img/D_NQ_NP_692212-MLU70775490991_072023-O.webp');
 }
 
 
