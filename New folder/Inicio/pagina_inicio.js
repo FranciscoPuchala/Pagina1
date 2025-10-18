@@ -191,26 +191,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             // Datos de ejemplo para la página de detalle
-            const productDescription = "Experimenta el poder inigualable y el diseño de vanguardia. Este producto redefine lo que esperas de la tecnología, ofreciendo un rendimiento excepcional y una integración perfecta con tu ecosistema digital.";
-            const productFeatures = [
-                "Chip A-Biónico de última generación",
-                "Pantalla ProMotion Super Retina XDR",
-                "Sistema de cámara triple de 48MP",
-                "Batería de larga duración"
-            ];
-
-            const selectedProduct = {
-                id: productId,
-                name: productName,
-                price: productPrice,
-                image: productImage, 
-                description: productDescription,
-                features: productFeatures
-            };
             
-            // Guarda el producto seleccionado y redirige.
-            localStorage.setItem('selectedProduct', JSON.stringify(selectedProduct));
-            window.location.href = `../Producto/pagina_producto.html`;
         });
     });
 });
