@@ -106,27 +106,20 @@ nav ul li a:hover {
 footer {
     background-color: #222;
     color: #eee;
-    padding: 40px;
-    font-size: 0.9em;
-    margin-top: 0;
-    padding: 40px;
+    padding: 40px 5%;
     padding-bottom: 0.3%;
     border-top: 5px solid #007bff;
-    position: fixed; /* Fixes the position relative to the viewport */
-    bottom: 0;       /* Aligns the footer to the bottom edge */
-    width: 100%;     /* Ensures it spans the full width of the screen */
-    z-index: 1000;   /* Optional: Ensures it appears above other elements */
 }
 
 .footer-content {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    gap: 2rem;
 }
 
 .footer-section {
     flex: 1;
+    margin-right: 20px;
     min-width: 200px;
 }
 
