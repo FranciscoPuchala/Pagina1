@@ -68,6 +68,19 @@ nav ul li a:hover {
     background-color: #f0f0f0;
 }
 
+/* Add default padding for all main content and ensure it's growing */
+main {
+    /* Set flex-grow here as a fallback or for non-#carrito pages */
+    flex-grow: 1; 
+    padding: 20px 5%;
+}
+
+/* Ensure the cart page doesn't double-apply padding if it's not needed */
+main.cart-page {
+    /* We can remove padding from cart-page as #carrito has 2rem 5% */
+    padding: 0;
+}
+
 .search-and-cart {
     display: flex;
     align-items: center;
@@ -103,6 +116,7 @@ nav ul li a:hover {
 }
 
 
+/* Pie de página */
 footer {
     background-color: #222;
     color: #eee;
@@ -154,8 +168,34 @@ footer {
 /* --- Estilos para la página del carrito --- */
 #carrito{
     display: flex;
+    /* FIX: Add justify-content to center the two columns horizontally */
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 30px;
     padding: 2rem 5%;
+    flex-grow: 1;
+}
+
+#carrito h2 {
+    /* Set the title to occupy the full width of the flex container (#carrito) */
+    width: 100%;
+    
+    /* Increase the size */
+    font-size: 2.5em; 
+    
+    /* Ensure the text is centered */
+    text-align: center; 
+    
+    /* Add padding/margin to push the content down */
+    margin-bottom: 30px; 
+    
+    /* Center the title block itself within the main container */
+    margin-left: auto; /* New: Ensures the block itself is centered */
+    margin-right: auto; /* New: Ensures the block itself is centered */
+
+    /* Apply a distinct color or style if desired (optional) */
+    color: #333; 
+    padding-top: 20px;
 }
 
 .cart-items {
@@ -249,7 +289,7 @@ footer {
 .cart-summary {
     flex: 1;
     background-color: #fff;
-    margin-top: 1%;
+    margin-top: 0;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
